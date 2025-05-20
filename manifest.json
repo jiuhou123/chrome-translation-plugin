@@ -1,0 +1,43 @@
+{
+    "manifest_version": 3,
+    "name": "中文翻译助手",
+    "version": "1.2",
+    "description": "一个简单的中英互译工具",
+    "permissions": [
+        "scripting",
+        "activeTab",
+        "notifications"
+    ],
+    "host_permissions": [
+        "<all_urls>"
+    ],
+    "action": {
+        "default_icon": {
+            "16": "images/icon16.png",
+            "48": "images/icon48.png",
+            "128": "images/icon128.png"
+        }
+    },
+    "icons": {
+        "16": "images/icon16.png",
+        "48": "images/icon48.png",
+        "128": "images/icon128.png"
+    },
+    "background": {
+        "service_worker": "background.js"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "js-md5.min.js",
+                "content.js"
+            ],
+            "css": [
+                "content-styles.css"
+            ]
+        }
+    ]
+}
