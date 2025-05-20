@@ -180,3 +180,7 @@
 .translator-sidebar.collapsed .translator-sidebar-toggle {
     left: 4px !important;
 }
+
+body {
+    transition: margin-right 0.3s !important;
+}

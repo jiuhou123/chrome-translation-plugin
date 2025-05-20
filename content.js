@@ -23,6 +23,7 @@ function showTranslatorSidebar() {
     const existingSidebar = document.querySelector('.translator-sidebar');
     if (existingSidebar) {
         existingSidebar.remove();
+        document.body.style.marginRight = '';
     }
 
     // 创建侧边栏
@@ -67,17 +68,28 @@ function showTranslatorSidebar() {
     document.body.appendChild(sidebar);
     console.log('Sidebar added to page'); // 调试日志
 
+    // 让网页内容让出空间
+    document.body.style.transition = 'margin-right 0.3s';
+    document.body.style.marginRight = '360px';
+
     // 展开/收起逻辑
     let collapsed = false;
     toggleBtn.onclick = function () {
         collapsed = !collapsed;
         sidebar.classList.toggle('collapsed', collapsed);
-        toggleBtn.innerHTML = collapsed ? '⮞' : '⮜';
+        if (collapsed) {
+            document.body.style.marginRight = '48px';
+            toggleBtn.innerHTML = '⮞';
+        } else {
+            document.body.style.marginRight = '360px';
+            toggleBtn.innerHTML = '⮜';
+        }
     };
 
     // 关闭按钮
     document.getElementById('translator-close').onclick = function () {
         sidebar.remove();
+        document.body.style.marginRight = '';
     };
 
     // 翻译逻辑
